@@ -33,8 +33,7 @@
         <node menu="钱包" action="click"></node>
         <node menu="卡包" action="click"></node>
         <node menu="表情" action="click"></node>
-        <node menu="设置" action="click"></node>   
-    
+        <node menu="设置" action="click"></node>
     </node>
 
 
