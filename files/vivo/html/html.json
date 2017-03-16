@@ -1,10 +1,11 @@
 {
-    "info":{"time":"", "count":"", "path":""},
+    "info":{"time":"2017-3-16 11:11:11", "count":"2", "path":"/asfdas/asfdasfd/afasfa"},
     "all_app":{
-        "wechat":{"nanme":"", "md5":""}
+        "wechat":{"name":"wechat.html", "md5":"asdfsf234sfasdfaw352sd"},
+        "zhaoxiangji":{"name":"zhaoxiangji.html", "md5":"asdfsf234sfasdfaw352sd"}
     },
     "update_app":{
-        "wechat":{"nanme":"", "md5":""}
+        "wechat":{"name":"wechat.html", "md5":"asdfsf234sfasdfaw352sd"}
     }
    
 }

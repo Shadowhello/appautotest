@@ -10,32 +10,33 @@ from cmd import BaseInterface
 import settings
 from utils import FileOperation
 from htmltoxml import translate
+from mylog import log
 
 
 class CommandHandler(BaseInterface):
 
-    __all__ = ["usage", "run", "updatehtml", "htmltoxml", "xmltoscript"]
+    __all__ = ["help", "run", "updatehtml", "htmltoxml", "xmltoscript"]
 
-    def usage(self,argv=settings.Command.HELP):
-        print settings.Command.USAGE_INFO
+    def help(self,argv=utils.Command.HELP):
+        log.info(utils.Command.USAGE_INFO) 
         
 
-    def run(self,argv=settings.Command.HELP):
-        if argv == settings.Command.HELP:
-            self.usage()
+    def run(self,argv=utils.Command.HELP):
+        if argv == utils.Command.HELP:
+            self.help()
         print argv
 
     
-    def updatehtml(self,argv=settings.Command.HELP):
-        if argv == settings.Command.HELP:
-            self.usage()
+    def updatehtml(self,argv=utils.Command.HELP):
+        if argv == utils.Command.HELP:
+            self.help()
         
         html_file_path = argv
         html_file_list = []
         json_data = {}
         if os.path.exists(html_file_path):
             html_file_list = FileOperation.get_html_files(html_file_path)
-            json_data = FileOperation.load_json(os.path.join(html_file_path, "html.json")) or settings.DataTpl.HTML_INFO_JSON
+            json_data = FileOperation.load_json(os.path.join(html_file_path, "html.json")) or utils.DataTpl.HTML_INFO_JSON
             json_data["info"]={
                 "time": utils.get_current_date() + " " + utils.get_current_time(),
                 "count": len(html_file_list),
@@ -63,15 +64,15 @@ class CommandHandler(BaseInterface):
             print "Error: File '{0}' not exists !".format(html_file_path)
             return False
     
-    def htmltoxml(self,argv=settings.Command.HELP):
-        if argv == settings.Command.HELP:
-            self.usage()
+    def htmltoxml(self,argv=utils.Command.HELP):
+        if argv == utils.Command.HELP:
+            self.help()
         translate(argv)
 
     
-    def xmltoscript(self,argv=settings.Command.HELP):
-        if argv == settings.Command.HELP:
-            self.usage()
+    def xmltoscript(self,argv=utils.Command.HELP):
+        if argv == utils.Command.HELP:
+            self.help()
         print argv
 
 
@@ -97,25 +98,18 @@ class ManagementUtility(object):
         try:
             subcommand = self.argv[1]
         except IndexError:
-            subcommand = settings.Command.HELP  # Display help if no arguments were given.
+            subcommand = utils.Command.HELP  # Display help if no arguments were given.
 
         try:
             parameter = self.argv[2]
         except IndexError:
-            parameter = settings.Command.HELP
-            
-        if subcommand == settings.Command.RUN:
-            self.command_handler.run(parameter)
-        elif subcommand == settings.Command.UPDATE_HTML:
-            self.command_handler.updatehtml(parameter)
-        elif subcommand == settings.Command.HTML_TO_XML:
-            self.command_handler.htmltoxml(parameter)
-        elif subcommand == settings.Command.XML_TO_SCRIPT:
-            self.command_handler.xmltoscript(parameter)
-        else:
-            self.command_handler.usage(parameter)
-            
+            parameter = utils.Command.HELP
 
+        log.debug("hahahahah")
+        if subcommand in self.command_handler.__all__:
+            getattr(self.command_handler, subcommand)(parameter)
+        else:
+            self.command_handler.help()
         
 
 

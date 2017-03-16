@@ -4,27 +4,27 @@
 from __future__ import unicode_literals
 
 from abc import ABCMeta, abstractmethod
-import settings
+import utils
 
 class BaseInterface(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def run(self,argv=settings.Command.HELP):
+    def run(self,argv=utils.Command.HELP):
         pass
 
     @abstractmethod
-    def usage(self,argv=settings.Command.HELP):
+    def help(self,argv=utils.Command.HELP):
         pass
 
     @abstractmethod
-    def updatehtml(self,argv=settings.Command.HELP):
+    def updatehtml(self,argv=utils.Command.HELP):
         pass
 
     @abstractmethod
-    def htmltoxml(self,argv=settings.Command.HELP):
+    def htmltoxml(self,argv=utils.Command.HELP):
         pass
 
     @abstractmethod
-    def xmltoscript(self,argv=settings.Command.HELP):
+    def xmltoscript(self,argv=utils.Command.HELP):
         pass

@@ -7,6 +7,7 @@ import sys
 import json
 import time
 import logging
+import logging.handlers
 
 def get_time_stamp():
     return time.time()
@@ -22,6 +23,46 @@ def get_current_time():
 
 def get_current_date():
     return get_format_time('%Y-%m-%d')
+
+class DataTpl(object):
+    HTML_INFO_JSON ={
+        "info":{"time":"", "count":"", "path":""},
+        "all_app":{},
+         "update_app":{}
+    }
+
+
+class Command(object):
+    HELP          = "help"
+    UPDATE_HTML   = "updatehtml"
+    HTML_TO_XML   = "htmltoxml"
+    XML_TO_SCRIPT = "xmltoscript"
+    RUN           = "run"
+
+    USAGE_INFO="""
+        其中选项包括：
+
+        -help           
+                    python manage.py help
+                    help信息，当命令或参数有误，或这命令为help时
+
+        -updatehtml 
+                    python manage.py updatehtml /file/path/htmldir 
+                    更新html文件接口，执行后生成html.json                       
+
+        -htmltoxml   
+                    python manage.py htmltoxml /file/path/html.json    
+                    更新html.json文件接口，html文件转换成[app.xml]文件
+
+        -xmltoscript     
+                    python manage.py xmltoscript /file/path/xml.json  
+                    解析xml.json，生成可执行的python脚本                                 
+
+        -run             
+                    python manage.py run  /file/path/run.json         
+                    执行run.json,依次执行文件里的配置脚本
+        
+        """
 
 
 class FileOperation(object):
@@ -56,3 +97,5 @@ class FileOperation(object):
     def store_json(self,filename,date):
         with open('data.json', 'w+') as json_file:
             json_file.write(json.dumps(data))
+
+
