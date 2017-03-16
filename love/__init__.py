@@ -5,35 +5,74 @@ from __future__ import unicode_literals
 
 import os
 import sys
+import json
 from cmd import BaseInterface
 import settings
+from utils import FileOperation
+from htmltoxml import translate
 
 
 class CommandHandler(BaseInterface):
 
+    __all__ = ["usage", "run", "updatehtml", "htmltoxml", "xmltoscript"]
 
-    def usage(self,argv="help"):
+    def usage(self,argv=settings.Command.HELP):
         print settings.Command.USAGE_INFO
         
 
-    def run(self,argv="help"):
-        if argv == "help":
+    def run(self,argv=settings.Command.HELP):
+        if argv == settings.Command.HELP:
             self.usage()
+        print argv
 
     
-    def updatehtml(self,argv="help"):
-        if argv == "help":
+    def updatehtml(self,argv=settings.Command.HELP):
+        if argv == settings.Command.HELP:
             self.usage()
+        
+        html_file_path = argv
+        html_file_list = []
+        json_data = {}
+        if os.path.exists(html_file_path):
+            html_file_list = FileOperation.get_html_files(html_file_path)
+            json_data = FileOperation.load_json(os.path.join(html_file_path, "html.json")) or settings.DataTpl.HTML_INFO_JSON
+            json_data["info"]={
+                "time": utils.get_current_date() + " " + utils.get_current_time(),
+                "count": len(html_file_list),
+                "path": html_file_path
+            }
+
+            for html_file in html_file_list:
+                html_file_name = html_file.split(".")[0]
+                html_file_md5 = FileOperation.get_mad5(os.path.join(html_file_path, html_file))
+                if html_file_name in json_data["all_app"].keys():                  
+                    if not html_file_md5 == json_data["all_app"][html_file_name]["md5"]:
+                        json_data["all_app"][html_file_name]["md5"] = html_file_md5
+                else:
+                    json_data["all_app"][html_file_name]={
+                        "name": html_file_name,
+                        "md5": html_file_md5
+                    }
+                    json_data["all_app"][html_file_name]={
+                        "name": html_file_name,
+                        "md5": html_file_md5
+                    }
+
+
+        else:
+            print "Error: File '{0}' not exists !".format(html_file_path)
+            return False
+    
+    def htmltoxml(self,argv=settings.Command.HELP):
+        if argv == settings.Command.HELP:
+            self.usage()
+        translate(argv)
 
     
-    def htmltoxml(self,argv="help"):
-        if argv == "help":
+    def xmltoscript(self,argv=settings.Command.HELP):
+        if argv == settings.Command.HELP:
             self.usage()
-
-    
-    def xmltoscript(self,argv="help"):
-        if argv == "help":
-            self.usage()
+        print argv
 
 
 class ManagementUtility(object):
@@ -58,12 +97,12 @@ class ManagementUtility(object):
         try:
             subcommand = self.argv[1]
         except IndexError:
-            subcommand = 'help'  # Display help if no arguments were given.
+            subcommand = settings.Command.HELP  # Display help if no arguments were given.
 
         try:
             parameter = self.argv[2]
         except IndexError:
-            parameter = 'help'
+            parameter = settings.Command.HELP
             
         if subcommand == settings.Command.RUN:
             self.command_handler.run(parameter)

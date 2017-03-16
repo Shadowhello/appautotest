@@ -1,10 +1,10 @@
 {
-    "info":{"time":"", "count":""},
+    "info":{"time":"", "count":"", "path":""},
     "all_app":{
-        "wechat":{"md5":"", "filepath":"", "time":""}
+        "wechat":{"nanme":"", "md5":""}
     },
     "update_app":{
-        "wechat":{"md5":"", "filepath":"", "time":""}
+        "wechat":{"nanme":"", "md5":""}
     }
    
 }
