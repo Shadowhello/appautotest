@@ -1,0 +1,40 @@
+<root name="微信">
+    <node menu="微信" action="click">
+        <node menu="+" action="click">
+            <node menu="发起群聊" action="click"></node>
+            <node menu="添加朋友" action="click"></node>
+            <node menu="扫一扫" action="click"></node>
+            <node menu="收付款" action="click"></node>
+        </node>
+    </node>
+
+    <node menu="通讯录" action="click">
+        <node menu="新的朋友" action="click">
+            <node menu="添加朋友" action="click"></node>
+            <node menu="添加手机联系人" action="click"></node>
+        </node>
+        <node menu="群聊" action="click"></node>
+        <node menu="标签" action="click"></node>
+        <node menu="公众号" action="click"></node>
+    </node>
+
+    <node menu="发现" action="click">
+        <node menu="朋友圈" action="click"></node>
+        <node menu="扫一扫" action="click"></node>
+        <node menu="摇一摇" action="click"></node>
+        <node menu="附近的人" action="click"></node>
+        <node menu="漂流瓶" action="click"></node>
+        <node menu="购物" action="click"></node> 
+        <node menu="游戏" action="click"></node>    
+    </node>
+    <node menu="我" action="click">
+        <node menu="相册" action="click"></node>
+        <node menu="收藏" action="click"></node>
+        <node menu="钱包" action="click"></node>
+        <node menu="卡包" action="click"></node>
+        <node menu="表情" action="click"></node>
+        <node menu="设置" action="click"></node>
+    </node>
+
+
+</root>
