@@ -17,13 +17,26 @@ class Command(object):
     RUN           = "run"
 
     USAGE_INFO="""
-        < subcommand >            < parameter >       description
+     其中选项包括：
 
-        updatehtml
+     -help           
+                python manage.py help
+                help信息，当命令或参数有误，或这命令为help时
 
-        htmltoxml
+     -updatehtml 
+                python manage.py updatehtml /file/path/htmldir 
+                更新html文件接口，执行后生成html.json                       
 
-        toscript
+     -htmltoxml   
+                python manage.py htmltoxml /file/path/html.json    
+                更新html.json文件接口，html文件转换成[app.xml]文件
 
-        run
-    """
+     -xmltoscript     
+                python manage.py xmltoscript /file/path/xml.json  
+                解析xml.json，生成可执行的python脚本                                 
+
+     -run             
+                python manage.py run  /file/path/run.json         
+                执行run.json,依次执行文件里的配置脚本
+    
+"""
