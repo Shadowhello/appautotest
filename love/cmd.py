@@ -28,3 +28,7 @@ class BaseInterface(object):
     @abstractmethod
     def xmltoscript(self,argv=utils.Command.HELP):
         pass
+
+    @abstractmethod
+    def clear(self,argv=utils.Command.HELP):
+        pass

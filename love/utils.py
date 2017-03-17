@@ -8,6 +8,7 @@ import json
 import time
 import logging
 import logging.handlers
+from md5 import md5
 
 def get_time_stamp():
     return time.time()
@@ -44,7 +45,7 @@ class Command(object):
 
         -help           
                     python manage.py help
-                    help信息，当命令或参数有误，或这命令为help时
+                    help信息，当命令或参数有误，或着命令为help时
 
         -updatehtml 
                     python manage.py updatehtml /file/path/htmldir 
@@ -61,14 +62,17 @@ class Command(object):
         -run             
                     python manage.py run  /file/path/run.json         
                     执行run.json,依次执行文件里的配置脚本
-        
+
+        -clear
+                    python manage.py clear
+                    清除项目中log和pyc文件
         """
 
 
 class FileOperation(object):
 
     @classmethod
-    def get_mad5(self, filename):
+    def get_mad5(self, filepath):
         m = md5()
         a_file = open(filepath, 'rb')    #需要使用二进制格式读取文件内容
         m.update(a_file.read())
@@ -94,8 +98,8 @@ class FileOperation(object):
         return data
 
     @classmethod
-    def store_json(self,filename,date):
-        with open('data.json', 'w+') as json_file:
+    def store_json(self,filename,data):
+        with open(filename, 'w+') as json_file:
             json_file.write(json.dumps(data))
 
 

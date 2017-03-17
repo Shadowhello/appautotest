@@ -56,7 +56,7 @@ LOG_COLORS = {
     'CRITICAL': COLOR_RED + '%s' + COLOR_RESET,  
     'EXCEPTION': COLOR_RED + '%s' + COLOR_RESET,  
 }  
-  
+
 # Global logger  
 log = None  
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

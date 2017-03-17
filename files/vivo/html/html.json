@@ -1,11 +1,59 @@
 {
-    "info":{"time":"2017-3-16 11:11:11", "count":"2", "path":"/asfdas/asfdasfd/afasfa"},
-    "all_app":{
-        "wechat":{"name":"wechat.html", "md5":"asdfsf234sfasdfaw352sd"},
-        "zhaoxiangji":{"name":"zhaoxiangji.html", "md5":"asdfsf234sfasdfaw352sd"}
+    "info": {
+        "count": 6,
+        "path": "/Users/li_jinzhou/Documents/Hoperun/pj/appautotest/files/vivo/html",
+        "time": "2017-03-17 16:32:59"
     },
-    "update_app":{
-        "wechat":{"name":"wechat.html", "md5":"asdfsf234sfasdfaw352sd"}
+    "update_app": {
+        "alipay": {
+            "name": "alipay.html",
+            "md5": "12ef16e0d2c395d10cb4ded21aa1a799"
+        },
+        "baidu": {
+            "name": "baidu.html",
+            "md5": "3a8a0fa385c8c3fd78a434fa45b215c0"
+        },
+        "qq": {
+            "name": "qq.html",
+            "md5": "11d5f8dac2aa5e1af8611c09354fd3b3"
+        },
+        "camera": {
+            "name": "camera.html",
+            "md5": "ad13617c6866d3a5fc1144d83822266b"
+        },
+        "wechat": {
+            "name": "wechat.html",
+            "md5": "cda44a6f31a36b36ee145b9058292188"
+        },
+        "uc": {
+            "name": "uc.html",
+            "md5": "bc10fbfe676d639b30d62fb333ef01f8"
+        }
+    },
+    "all_app": {
+        "alipay": {
+            "name": "alipay.html",
+            "md5": "12ef16e0d2c395d10cb4ded21aa1a799"
+        },
+        "baidu": {
+            "name": "baidu.html",
+            "md5": "3a8a0fa385c8c3fd78a434fa45b215c0"
+        },
+        "qq": {
+            "name": "qq.html",
+            "md5": "11d5f8dac2aa5e1af8611c09354fd3b3"
+        },
+        "camera": {
+            "name": "camera.html",
+            "md5": "ad13617c6866d3a5fc1144d83822266b"
+        },
+        "wechat": {
+            "name": "wechat.html",
+            "md5": "cda44a6f31a36b36ee145b9058292188"
+        },
+        "uc": {
+            "name": "uc.html",
+            "md5": "bc10fbfe676d639b30d62fb333ef01f8"
+        }
     }
-   
 }
