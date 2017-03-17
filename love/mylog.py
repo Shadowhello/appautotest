@@ -139,12 +139,13 @@ def init_logger():
   
 def set_logger(filename = None, mode = 'a', s_level='DEBUG',f_level='DEBUG', 
                fmt = '[%(levelname)s] %(asctime)s %(message)s',  
-               backup_count = 5, limit = 20480, when = None):  
+               backup_count = 5, limit = 20480, when = None, is_add_log_file=False):  
     '''''Configure the global logger.'''  
  
     init_logger()  
-    add_streamhandler(s_level, fmt)  
-    add_filehandler(f_level, fmt, filename, mode, backup_count, limit, when)  
+    add_streamhandler(s_level, fmt)
+    if is_add_log_file:
+        add_filehandler(f_level, fmt, filename, mode, backup_count, limit, when)  
   
     # Import the common log functions for convenient  
     import_log_funcs()  
@@ -164,7 +165,7 @@ def import_log_funcs():
 # Set a default logger  
 set_logger(filename=settings.LOG_FILE_PATH, mode=settings.LOG_WRITE_MODE, s_level=settings.LOG_STREAM_LEVEL,
     f_level=settings.LOG_FILE_LEVEL, fmt=settings.LOG_FORMAT, backup_count=settings.LOG_BACKUP_COUNT,
-    limit=settings.LOG_FILE_SIZE_LIMIT, when=settings.LOG_WHEN)
+    limit=settings.LOG_FILE_SIZE_LIMIT, when=settings.LOG_WHEN,is_add_log_file=settings.LOG_IS_FILE)
 
 
 

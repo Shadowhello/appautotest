@@ -105,7 +105,6 @@ class ManagementUtility(object):
         except IndexError:
             parameter = utils.Command.HELP
 
-        log.debug("hahahahah")
         if subcommand in self.command_handler.__all__:
             getattr(self.command_handler, subcommand)(parameter)
         else:
