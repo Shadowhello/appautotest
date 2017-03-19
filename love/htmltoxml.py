@@ -6,8 +6,9 @@ import os
 import sys
 import json
 import time
+from mylog import log
 
-__auth__ = "weiwei.lui"
+__author__ = "weiwei.lui"
 
 """
 使用实际的绝对路径
@@ -24,5 +25,5 @@ python manage.py htmltoxml /appautotest/files/vivo/html.json
 
 
 def translate(argv):
-    print argv
+    log.debug(argv)
 

@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
+# 引入python3的编码格式： Unicode编码
 from __future__ import unicode_literals
+
 import os
 import sys
 

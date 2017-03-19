@@ -5,8 +5,10 @@
 #### 环境搭建
 
     ```
-    python 2.7.6+
+    python 2.7
     pip install uiautomator
+    pip install beautifulsoup4
+    pip install lxml
     ```
 
 

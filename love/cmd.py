@@ -9,6 +9,8 @@ import utils
 class BaseInterface(object):
     __metaclass__ = ABCMeta
 
+    __all__ = ["help", "run", "updatehtml", "htmltoxml", "xmltoscript", "clear"]
+
     @abstractmethod
     def run(self,argv=utils.Command.HELP):
         pass

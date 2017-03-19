@@ -9,6 +9,7 @@ import time
 import logging
 import logging.handlers
 from md5 import md5
+from bs4 import BeautifulSoup
 
 def get_time_stamp():
     return time.time()
@@ -102,4 +103,7 @@ class FileOperation(object):
         with open(filename, 'w+') as json_file:
             json_file.write(json.dumps(data))
 
+    @classmethod
+    def load_html(self, filename, mymarkup="lxml"):
+        return BeautifulSoup(open(filename), mymarkup)
 

@@ -11,20 +11,21 @@ import settings
 from utils import FileOperation
 from htmltoxml import translate
 from mylog import log
+from bs4 import BeautifulSoup
 
 
 class CommandHandler(BaseInterface):
 
-    __all__ = ["help", "run", "updatehtml", "htmltoxml", "xmltoscript", "clear"]
-
-
     def clear(self, argv=utils.Command.HELP):
+        '''
+        clear the .log and .pyc files 
+        '''
         def rm(path, filepath):
             for filename in filepath:
-                if "." in filename:
-                    if filename.split('.')[1] in ["log", "pyc"]:
-                        log.info("clear "+filename)
-                        os.remove(os.path.join(path, filename))
+                if filename.split('.')[-1] in ["log", "pyc"]:
+                    log.info("clear "+filename)
+                    os.remove(os.path.join(path, filename))
+
         root_path = settings.BASE_DIR
         root_filepath = os.listdir(root_path) 
         love_path = os.path.join(root_path, "love")
@@ -34,34 +35,48 @@ class CommandHandler(BaseInterface):
 
 
     def help(self,argv=utils.Command.HELP):
+        '''
+        display the usage message
+        '''
         log.info(utils.Command.USAGE_INFO) 
         
 
     def run(self,argv=utils.Command.HELP):
         if argv == utils.Command.HELP:
             self.help()
+            return False
+
         print argv
 
     
     def updatehtml(self,argv=utils.Command.HELP):
+        '''
+        update the html.json
+        
+        '''
         log.info("updatehtml")
         if argv == utils.Command.HELP:
             self.help()
+            return False
         
         html_file_path = argv   # html文件路径
         html_file_list = []     # 所有html文件列表
         json_data = {}          # json文件数据
-        json_file_path = os.path.join(html_file_path, "html.json") # html.json文件路径
+        json_file_path = os.path.join(html_file_path, "html.json") # html.json文件名加路径
 
+        # html路径正确
         if os.path.exists(html_file_path):
+            # 获取所有的html文件名
             html_file_list = FileOperation.get_html_files(html_file_path)
             # log.debug(html_file_list)
 
+            # 获取html.json文件内容，文件不存在则赋值内容模板
             if not os.path.exists(json_file_path):
                 json_data = utils.DataTpl.HTML_INFO_JSON
             else:
-                json_data=utils.FileOperation.load_json(json_file_path)
+                json_data = utils.FileOperation.load_json(json_file_path)
 
+            # 更新html.json的info信息
             json_data["info"]={
                 "time": utils.get_current_date() + " " + utils.get_current_time(),
                 "count": len(html_file_list),
@@ -98,7 +113,8 @@ class CommandHandler(BaseInterface):
             # log.info(json_data)
             # 保存
             utils.FileOperation.store_json(json_file_path, json_data)
-            log.info("成功更新html.json")
+            if json_data['update_app'].keys():
+                log.info("更新的html文件有: {0}".format(str(json_data['update_app'].keys())))
         else:
             log.error("File '{0}' not exists !".format(html_file_path))
             self.help()
@@ -107,7 +123,32 @@ class CommandHandler(BaseInterface):
     def htmltoxml(self,argv=utils.Command.HELP):
         if argv == utils.Command.HELP:
             self.help()
+            return False
+
         translate(argv)
+        
+
+        # html_file_path = argv
+        # json_data = {}          # json文件数据
+        # # 获取html.json文件内容，文件不存在则赋值内容模板
+        # if not os.path.exists(json_file_path):
+        #     log.error("File '{0} not exists !".format(html_file_path))
+        #     self.help()
+        #     return False
+        
+        # json_data = utils.FileOperation.load_json(json_file_path)
+        # html_path = json_data["info"]["path"]
+        # update_app = json_data["update"] or json_data["all_app"]
+        # if not update_app:
+        #     log.error("JSON data is None")
+        #     return False
+
+        # for app in update_app.keys():
+        #     app_filepath = os.path.join(html_path, update_app[app]["name"])
+        #     html = utils.FileOperation.load_html(app_filepath)
+        #     for h_targ in html.body.children:
+        
+
 
     
     def xmltoscript(self,argv=utils.Command.HELP):
@@ -124,10 +165,8 @@ class ManagementUtility(object):
     by editing the self.commands dictionary.
     """
     def __init__(self, argv=None):
-        self.argv = argv or sys.argv[:]
-        self.prog_name = os.path.basename(self.argv[0])
-        self.settings_exception = None
-        self.command_handler = CommandHandler()
+        self.argv = argv or sys.argv[:] # 命令行参数列表
+        self.command_handler = CommandHandler() # 命令处理函数对象实例
         
 
     def execute(self):
@@ -136,15 +175,16 @@ class ManagementUtility(object):
         being run, creates a parser appropriate to that command, and runs it.
         """
         try:
-            subcommand = self.argv[1]
+            subcommand = self.argv[1] # 用户输入的命令：如 help、htmltoxml
         except IndexError:
             subcommand = utils.Command.HELP  # Display help if no arguments were given.
 
         try:
-            parameter = self.argv[2]
+            parameter = self.argv[2] # 用户输入的命令参数
         except IndexError:
-            parameter = utils.Command.HELP
+            parameter = utils.Command.HELP # Display help if no arguments were given.
 
+        # 根据输入执行相应的函数
         if subcommand in self.command_handler.__all__:
             getattr(self.command_handler, subcommand)(parameter)
         else:

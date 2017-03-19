@@ -1,16 +1,16 @@
 <root name="微信">
-    <node menu="微信" action="click">
+    <node menu="微信" action="click" point="313,1231">
         <node menu="+" action="click">
-            <node menu="发起群聊" action="click"></node>
+            <node menu="发起群聊" action="click" resourceId="test_id"></node>
             <node menu="添加朋友" action="click"></node>
             <node menu="扫一扫" action="click"></node>
             <node menu="收付款" action="click"></node>
         </node>
     </node>
-
+  
     <node menu="通讯录" action="click">
         <node menu="新的朋友" action="click">
-            <node menu="添加朋友" action="click"></node>
+            <node menu="添加朋友" action="click" description="test_description"></node>
             <node menu="添加手机联系人" action="click"></node>
         </node>
         <node menu="群聊" action="click"></node>
