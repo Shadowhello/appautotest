@@ -1,3 +1,4 @@
+<?xml version="1.0"  encoding="gb2312" ?>
 <root name="微信">
     <node menu="微信" action="click" point="313,1231">
         <node menu="+" action="click">

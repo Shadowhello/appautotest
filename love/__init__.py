@@ -12,6 +12,8 @@ from utils import FileOperation
 from htmltoxml import translate
 from mylog import log
 from bs4 import BeautifulSoup
+import xml.etree.ElementTree as ET
+from xml.dom.minidom import Document
 
 
 class CommandHandler(BaseInterface):
@@ -125,28 +127,31 @@ class CommandHandler(BaseInterface):
             self.help()
             return False
 
-        translate(argv)
+        # translate(argv)
         
 
-        # html_file_path = argv
-        # json_data = {}          # json文件数据
-        # # 获取html.json文件内容，文件不存在则赋值内容模板
-        # if not os.path.exists(json_file_path):
-        #     log.error("File '{0} not exists !".format(html_file_path))
-        #     self.help()
-        #     return False
+        json_file_path = argv
+        json_data = {}          # json文件数据
+        if not os.path.exists(json_file_path):
+            log.error("File '{0} not exists !".format(json_file_path))
+            self.help()
+            return False
         
-        # json_data = utils.FileOperation.load_json(json_file_path)
-        # html_path = json_data["info"]["path"]
-        # update_app = json_data["update"] or json_data["all_app"]
-        # if not update_app:
-        #     log.error("JSON data is None")
-        #     return False
+        json_data = utils.FileOperation.load_json(json_file_path)
+        html_path = json_data["info"]["path"]
+        update_app = json_data["update_app"] or json_data["all_app"]
+        if not update_app:
+            log.error("JSON data is None")
+            return False
 
-        # for app in update_app.keys():
-        #     app_filepath = os.path.join(html_path, update_app[app]["name"])
-        #     html = utils.FileOperation.load_html(app_filepath)
-        #     for h_targ in html.body.children:
+        for app in update_app.keys():
+            app_filepath = os.path.join(html_path, update_app[app]["name"])
+            log.info(app_filepath)
+
+            html = utils.FileOperation.load_html(app_filepath)
+            for child in html.body.children:
+                log.info(child)
+
         
 
 

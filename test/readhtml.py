@@ -32,11 +32,11 @@ print soup.title.string
 print soup.h2.a.string
 
 # 获取h3中a的值
-print soup.h3.a.string
+print soup.h3.a.string.strip()
 
 # 获取h3的属性
 print soup.h3.attrs
 
 # 遍历子节点
 for c in soup.body.children:
-    print c
+    print c.encode("gbk")
