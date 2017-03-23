@@ -1,1 +1,35 @@
-{"info": {"count": 3, "path": "/Users/li_jinzhou/Documents/Hoperun/pj/appautotest/files/vivo/html/", "time": "2017-03-23 18:03:23"}, "update_app": {"qq": {"name": "qq.html", "md5": "5138c3b049d885a1be6f674bf511477a"}, "weibo": {"name": "weibo.html", "md5": "e881be510224c1a0c90875ca7f1403be"}}, "all_app": {"qq": {"name": "qq.html", "md5": "5138c3b049d885a1be6f674bf511477a"}, "weibo": {"name": "weibo.html", "md5": "e881be510224c1a0c90875ca7f1403be"}, "wechat": {"name": "wechat.html", "md5": "0df87c50f74601fe89754ffeccc9392b"}}}
+{
+    "info": {
+        "count": 3,
+        "path": "/Users/li_jinzhou/Documents/Hoperun/pj/appautotest/files/vivo/html/",
+        "time": "2017-03-23 20:31:23"
+    },
+    "update_app": {
+        "qq": {
+            "name": "qq.html",
+            "md5": "fc5cea4bcda7eab957b58111411bb430"
+        },
+        "weibo": {
+            "name": "weibo.html",
+            "md5": "7ae40232001753a6c883f22379f49f1a"
+        },
+        "wechat": {
+            "name": "wechat.html",
+            "md5": "1cb05531e43d36d6f6ac95f928f9996e"
+        }
+    },
+    "all_app": {
+        "qq": {
+            "name": "qq.html",
+            "md5": "fc5cea4bcda7eab957b58111411bb430"
+        },
+        "weibo": {
+            "name": "weibo.html",
+            "md5": "7ae40232001753a6c883f22379f49f1a"
+        },
+        "wechat": {
+            "name": "wechat.html",
+            "md5": "1cb05531e43d36d6f6ac95f928f9996e"
+        }
+    }
+}

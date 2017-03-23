@@ -35,6 +35,7 @@ class HtmlToXML(object):
         self._menu_level = "1"
         self._json_data = {}
         self._update_app = {}
+        self._current_app=""
         
 
     def get_attrs(self,tag, strip = True):
@@ -47,23 +48,27 @@ class HtmlToXML(object):
                     return tag_c.string
     
     def format_attrs(self, tag_string):
-        menu_dic = {}
+        menu_dict = {}
         try:
             for item in tag_string.split(":"):
+                if utils.PhoneElement.POINT in item:
+                    menu_dict[item.split("=")[0]] = item.split("=")[1]
+                    continue
                 if item in utils.Action.USER_ACTION:
-                    menu_dic["action"] = item
+                    menu_dict["action"] = item
                 elif "=" in item:
-                    tmp = item.split("=")
-                    if tmp[0] in utils.PhoneElement.KEY:
-                        menu_dic[tmp[0]] = tmp[1]
-                    else:
-                        log.error("{0} key error, you can use this keys : {1}".format(tmp[0], str(utils.PhoneElement.KEY)))
+                    for attr in item.split(","):
+                        tmp = attr.split("=")
+                        if tmp[0] in utils.PhoneElement.KEY:
+                            menu_dict[tmp[0]] = tmp[1]
+                        else:
+                            log.error("{0} key error, you can use this keys : {1}".format(tmp[0], str(utils.PhoneElement.KEY)))
                 else:
-                    menu_dic['menu'] = item
+                    menu_dict['menu'] = item
         except BaseException as e:
             log.error(str(e))
 
-        return menu_dic
+        return menu_dict
 
 
     def read_json_conf(self):
@@ -103,6 +108,7 @@ class HtmlToXML(object):
 
     def write_xml(self):
         for html_file in self._update_app.keys():
+            self._current_app = html_file
             html_file_path = os.path.join(self._html_path, self._update_app[html_file]['name'])
             xml_file_path = os.path.join(self._xml_path, html_file+".xml")
             soup = BeautifulSoup(open(html_file_path), "lxml")

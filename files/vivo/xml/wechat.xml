@@ -7,7 +7,7 @@
 					<node action="click" menu="面对面建群"/>
 				</node>
 				<node action="click" menu="添加朋友"/>
-				<node action="click" menu="扫一扫" resourceId="swipe_id,className"/>
+				<node action="click" className="swipe_name" menu="扫一扫" resourceId="swipe_id"/>
 				<node action="click" menu="收付款"/>
 			</node>
 		</node>

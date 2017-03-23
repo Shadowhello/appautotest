@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 import os
 import sys
 import json
@@ -25,6 +25,9 @@ def get_current_time():
 
 def get_current_date():
     return get_format_time('%Y-%m-%d')
+
+class ErrorChar(object):
+    ERROR_CHARS=["：","，","；",";"]
 
 class Action(object):
     USER_ACTION=['click','swipe','longclick']
@@ -53,7 +56,7 @@ class Command(object):
     XML_TO_SCRIPT = "xmltoscript"
     RUN           = "run"
 
-    USAGE_INFO="""
+    USAGE_INFO=u"""
         其中选项包括：
 
         -help           
