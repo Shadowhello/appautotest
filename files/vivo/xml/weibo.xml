@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<root app="微博">
+		<node action="click" menu="微博"/>
+		<node action="click" menu="消息">
+			<node action="click" menu="发现群">
+				<node action="click" menu="新建群"/>
+				<node action="click" menu="搜索群"/>
+			</node>
+			<node action="click" menu="@我的">
+				<node action="click" menu="设置"/>
+			</node>
+			<node action="click" menu="评论"/>
+			<node action="click" menu="赞"/>
+		</node>
+		<node action="click" menu="+">
+			<node action="click" menu="文字"/>
+			<node action="click" menu="拍摄"/>
+			<node action="click" menu="相册"/>
+			<node action="click" menu="直播"/>
+			<node action="click" menu="光影秀"/>
+			<node action="click" menu="头条文章"/>
+			<node action="click" menu="签到"/>
+			<node action="click" menu="点评"/>
+		</node>
+		<node action="click" menu="发现">
+			<node action="click" menu="热门"/>
+			<node action="click" menu="榜单"/>
+			<node action="click" menu="视频"/>
+			<node action="click" menu="头条"/>
+		</node>
+		<node action="click" menu="我">
+			<node action="click" menu="添加好友">
+				<node action="click" menu="扫一扫"/>
+				<node action="click" menu="我的二维码"/>
+				<node action="click" menu="通讯录好友"/>
+			</node>
+			<node action="click" menu="设置">
+				<node action="click" menu="账号管理"/>
+				<node action="click" menu="账号与安全"/>
+				<node action="click" menu="消息设置"/>
+				<node action="click" menu="屏蔽设置"/>
+			</node>
+			<node action="click" menu="微博">
+				<node action="click" menu="全部"/>
+				<node action="click" menu="原创"/>
+				<node action="click" menu="视频"/>
+				<node action="click" menu="文章"/>
+				<node action="click" menu="图片"/>
+			</node>
+			<node action="click" menu="关注">
+				<node action="click" menu="推荐"/>
+				<node action="click" menu="全部关注"/>
+				<node action="click" menu="最新发博"/>
+			</node>
+			<node action="click" menu="粉丝"/>
+		</node>
+	</root>

@@ -126,40 +126,8 @@ class CommandHandler(BaseInterface):
         if argv == utils.Command.HELP:
             self.help()
             return False
+        translate(argv)
 
-        # translate(argv)
-        
-
-        json_file_path = argv
-        json_data = {}          # json文件数据
-        if not os.path.exists(json_file_path):
-            log.error("File '{0} not exists !".format(json_file_path))
-            self.help()
-            return False
-        
-        json_data = utils.FileOperation.load_json(json_file_path)
-        html_path = json_data["info"]["path"]
-        update_app = json_data["update_app"] or json_data["all_app"]
-        if not update_app:
-            log.error("JSON data is None")
-            return False
-
-        for app in update_app.keys():
-            app_filepath = os.path.join(html_path, update_app[app]["name"])
-            log.info(app_filepath)
-
-            html = utils.FileOperation.load_html(app_filepath)
-            for child in html.body.children:
-                log.info(child)
-
-        
-
-
-    
-    def xmltoscript(self,argv=utils.Command.HELP):
-        if argv == utils.Command.HELP:
-            self.help()
-        print argv
 
 
 class ManagementUtility(object):

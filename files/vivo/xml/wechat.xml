@@ -1,41 +1,38 @@
-<?xml version="1.0"  encoding="gb2312" ?>
-<root name="微信">
-    <node menu="微信" action="click" point="313,1231">
-        <node menu="+" action="click">
-            <node menu="发起群聊" action="click" resourceId="test_id"></node>
-            <node menu="添加朋友" action="click"></node>
-            <node menu="扫一扫" action="click"></node>
-            <node menu="收付款" action="click"></node>
-        </node>
-    </node>
-  
-    <node menu="通讯录" action="click">
-        <node menu="新的朋友" action="click">
-            <node menu="添加朋友" action="click" description="test_description"></node>
-            <node menu="添加手机联系人" action="click"></node>
-        </node>
-        <node menu="群聊" action="click"></node>
-        <node menu="标签" action="click"></node>
-        <node menu="公众号" action="click"></node>
-    </node>
-
-    <node menu="发现" action="click">
-        <node menu="朋友圈" action="click"></node>
-        <node menu="扫一扫" action="click"></node>
-        <node menu="摇一摇" action="click"></node>
-        <node menu="附近的人" action="click"></node>
-        <node menu="漂流瓶" action="click"></node>
-        <node menu="购物" action="click"></node> 
-        <node menu="游戏" action="click"></node>    
-    </node>
-    <node menu="我" action="click">
-        <node menu="相册" action="click"></node>
-        <node menu="收藏" action="click"></node>
-        <node menu="钱包" action="click"></node>
-        <node menu="卡包" action="click"></node>
-        <node menu="表情" action="click"></node>
-        <node menu="设置" action="click"></node>
-    </node>
-
-
-</root>
+<?xml version="1.0" encoding="utf-8"?>
+	<root app="微信">
+		<node action="click" menu="微信">
+			<node action="click" menu="+" point="100,200">
+				<node action="click" menu="发起群聊">
+					<node action="click" menu="选择一个群"/>
+					<node action="click" menu="面对面建群"/>
+				</node>
+				<node action="click" menu="添加朋友"/>
+				<node action="click" menu="扫一扫" resourceId="swipe_id,className"/>
+				<node action="click" menu="收付款"/>
+			</node>
+		</node>
+		<node action="click" menu="通讯录">
+			<node action="click" menu="新的朋友">
+				<node action="click" menu="添加朋友"/>
+				<node action="click" menu="添加手机联系人"/>
+			</node>
+			<node action="click" menu="群聊"/>
+			<node action="click" menu="标签"/>
+			<node action="click" menu="公众号"/>
+		</node>
+		<node action="click" menu="发现">
+			<node action="click" menu="朋友圈"/>
+			<node action="click" menu="扫一扫"/>
+			<node action="click" menu="摇一摇"/>
+			<node action="click" menu="附近的人"/>
+			<node action="click" menu="漂流瓶"/>
+		</node>
+		<node action="click" menu="我">
+			<node action="click" menu="相册"/>
+			<node action="click" menu="收藏"/>
+			<node action="click" menu="钱包"/>
+			<node action="click" menu="卡包"/>
+			<node action="click" menu="表情"/>
+			<node action="click" menu="设置"/>
+		</node>
+	</root>

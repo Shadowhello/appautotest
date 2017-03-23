@@ -26,6 +26,18 @@ def get_current_time():
 def get_current_date():
     return get_format_time('%Y-%m-%d')
 
+class Action(object):
+    USER_ACTION=['click','swipe','longclick']
+    CLICK = 'click'
+    SWIPE = 'swipe'
+    LONGCLICK = 'longclick'
+
+class PhoneElement(object):
+    KEY=['resourceId', 'className', 'point']
+    RESOURCE_ID = 'resourceId'
+    CLASS_NAME = 'className'
+    POINT = 'point'
+
 class DataTpl(object):
     HTML_INFO_JSON ={
         "info":{"time":"", "count":"", "path":""},
@@ -85,6 +97,14 @@ class FileOperation(object):
         html_list = []
         for html in self.get_files(filepath):
             if ".html" in html:
+                html_list.append(html)
+        return html_list
+
+    @classmethod
+    def get_xml_files(self, filepath):
+        html_list = []
+        for html in self.get_files(filepath):
+            if ".xml" in html:
                 html_list.append(html)
         return html_list
 

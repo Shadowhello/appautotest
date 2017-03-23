@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<root app="QQ">
+		<node action="click" menu="消息">
+			<node action="click" menu="+">
+				<node action="click" menu="创建群聊"/>
+				<node action="click" menu="加好友/群"/>
+				<node action="click" menu="扫一扫"/>
+				<node action="click" menu="面对面快传"/>
+				<node action="click" menu="付款"/>
+				<node action="click" menu="拍摄"/>
+				<node action="click" menu="面对面红包"/>
+			</node>
+			<node menu="click：电话">
+				<node action="click" menu="消息"/>
+				<node action="click" menu="电话"/>
+			</node>
+		</node>
+		<node action="click" menu="联系人">
+			<node action="click" menu="新朋友">
+				<node action="click" menu="添加"/>
+			</node>
+			<node action="click" menu="群聊">
+				<node action="click" menu="我的群"/>
+				<node action="click" menu="多人聊天"/>
+				<node action="click" menu="+"/>
+			</node>
+			<node action="click" menu="公众号">
+				<node action="click" menu="添加"/>
+			</node>
+		</node>
+		<node action="click" menu="动态">
+			<node action="click" menu="好友动态">
+				<node action="click" menu="相册"/>
+				<node action="click" menu="说说"/>
+				<node action="click" menu="个性化"/>
+				<node action="click" menu="小游戏"/>
+				<node action="click" menu="消息"/>
+			</node>
+			<node action="click" menu="附近">
+				<node action="click" menu="附近的人"/>
+				<node action="click" menu="直播"/>
+				<node action="click" menu="新鲜事"/>
+				<node action="click" menu="群聊"/>
+			</node>
+			<node action="click" menu="兴趣部落">
+				<node action="click" menu="推荐"/>
+				<node action="click" menu="发现"/>
+				<node action="click" menu="视频"/>
+			</node>
+			<node action="click" menu="更多"/>
+		</node>
+	</root>

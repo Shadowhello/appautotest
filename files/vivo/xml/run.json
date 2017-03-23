@@ -1,8 +1,21 @@
 {
-    "device":{
-        "id":"23434432342"
+    "info": {
+        "count": 3,
+        "loop": 1,
+        "time": "2017-03-23 18:23:21"
     },
-    "case":[
-        ["wechat.xml",1]
+    "cases": [
+        {
+            "case": "qq.xml",
+            "loop": 1
+        },
+        {
+            "case": "wechat.xml",
+            "loop": 1
+        },
+        {
+            "case": "weibo.xml",
+            "loop": 1
+        }
     ]
 }
